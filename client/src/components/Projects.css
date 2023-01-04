@@ -1,0 +1,11 @@
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - var(--header_height));
+  background-color: rgb(102, 11, 167);
+}
+
+.projects-container--minheight {
+  min-height: 100vh;  
+}

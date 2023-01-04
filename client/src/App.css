@@ -1,16 +1,7 @@
-.layout {
+.layout-container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   width: 100%;
-  min-height: 100%;
-  background-color: rgb(0, 0, 0);
-}
-
-.layout-body {
-  display: flex;
-  width: 100%;
-  height: calc(100% - var(--header_height));
-  flex-grow: 1;
-  background-color: rgb(43, 195, 226);
+  min-height: 100vh;
 }

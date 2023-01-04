@@ -46,7 +46,6 @@ export default function Header() {
         </div>) : null
       }
     </div>
-
   //pc view
   const header =     
     <div className={'layout-header-pc'}>

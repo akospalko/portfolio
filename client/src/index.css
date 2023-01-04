@@ -18,24 +18,16 @@
   --header_height: 75px; 
 }
 
-html {
+html, body {
+  height: 100vh;
+  margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  overflow-y: scroll;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
- body {
-  min-height: 100vh;
-  width: 100%;
-  background-color: rgb(166, 116, 34); 
-  margin: 0 auto;
-}
-
-#root {
-  /* display: flex;
-  justify-content: center; */
-  height: 100vh;
-  width: 100%;
 }
