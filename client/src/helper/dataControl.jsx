@@ -5,8 +5,8 @@ export const navElements = [
     path: '/about'
   }, {
     id: 2,
-    name: 'project',
-    path: '/project'
+    name: 'projects',
+    path: '/projects'
   }, {
     id: 3,
     name: 'contact',
