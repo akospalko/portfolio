@@ -8,16 +8,18 @@ import FullContent from './components/FullContent'
 
 function App() {
   return (
-    <div className={'layout-container'} >
+    <div className='layout-container' >
       {/* Header/Navigation layout */}
-        <Header/>
+      <Header/>
       {/* Routes */}
+      {/* <div className='layout-body'> */}
       <Routes>
         <Route path={'/'} element={ <FullContent/> } />
         <Route path={'/about'} element={ <About/> } /> 
         <Route path={'/projects'} element={ <Projects/> } /> 
         <Route path={'/contact'} element={ <Contact/> } /> 
       </Routes>
+      {/* </div> */}
     </div>
   )
 }

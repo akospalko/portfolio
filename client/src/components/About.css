@@ -1,7 +1,27 @@
+/* as long as about component is positioned first in the navigation elem's row, no need to apply conditional rendering (min-height) reference: check about/contact components  */
 .about-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: calc(100vh - var(--header_height));
-  background-color: rgb(130, 26, 141);
+  background-color: rgb(47, 141, 26);
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.about-container--minheight {
+  min-height: 100vh;  
+}
+
+.about-anchor {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.about-anchor h1 {
+  margin: 0;
 }

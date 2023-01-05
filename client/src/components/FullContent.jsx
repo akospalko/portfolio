@@ -4,6 +4,7 @@ import './FullContent.css'
 import About from './About'
 import Contact from './Contact'
 import Projects from './Projects'
+import Footer from '../layout/Footer'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <About calcHeight={'fullContent'}/>
       <Projects calcHeight={'fullContent'}/>
       <Contact calcHeight={'fullContent'}/>
+      <Footer/>
     </>
   )
 }

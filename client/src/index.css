@@ -16,6 +16,7 @@
   
   /* custom values */
   --header_height: 75px; 
+  --footer_height: 200px;
 }
 
 html, body {
