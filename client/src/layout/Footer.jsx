@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import Logo from '../assets/logo-test.svg'
+import Logo from '../assets/logo.svg'
 import { navElements } from '../helper/dataControl'
 
 export default function Footer() {

@@ -6,7 +6,7 @@ import MenuClose from '../assets/close.svg';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import Navigation from './Navigation';
-import Logo from '../assets/logo-test.svg';
+import Logo from '../assets/logo.svg';
 
 export default function Header() {
   const [toggled, setToggled] = useState(false); // menu bar toggle for responsive view
