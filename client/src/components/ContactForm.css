@@ -1,22 +1,23 @@
 
 /* form */
-.form-container {
+
+.form-container,
+.form-message,
+.form-loadermodal {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.form-container {
   height: auto;
   background-color: rgba(161, 161, 163, 0.95);
   position: relative;
 }
 
 .form-message {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
 }
 
@@ -31,10 +32,6 @@
 }
 
 .form-loadermodal {
-  display: flex;
-  flex-direction: column ;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -52,9 +49,6 @@
 }
 
 .form-statusmessage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0rem;
   font-size: 1.5rem;
 }

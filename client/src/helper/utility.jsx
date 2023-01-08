@@ -22,11 +22,11 @@ export const buildForm = (formElements) => {
 
 // transform form data to a simple object only containing the input field name and its value
  export const getFormValues = (formData) => {
-  const newFormArr = [];
+  let newFormObj = {};
   for(let element in formData) {
-    newFormArr.push({name: formData[element].name, value: formData[element].value});
+    newFormObj = {...newFormObj, [element]: formData[element].value}
   }
-  return newFormArr;
+  return newFormObj;
 }
 
 //character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)

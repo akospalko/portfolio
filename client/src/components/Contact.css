@@ -1,7 +1,11 @@
-.contact-container {
+.contact-container, 
+.contact-content {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.contact-container {
   min-height: calc(100vh - var(--header_height));
   background-color: rgb(98, 24, 113);
   padding: 1rem;
@@ -13,15 +17,11 @@
 }
 
 .contact-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   height: auto;
   flex-grow: 1;
   justify-content: space-around;
   align-items: center;
 }
-
 
 @media (min-width: 1366px) {
   .contact-content {

@@ -8,16 +8,14 @@ import './ContactForm.css'
 import { contactFormData } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
 import Loader from '../assets/loader.svg'
+import axios from 'axios'
 
 export default function ContactForm() {
   const [contactData, setContactData] = useState(contactFormData);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isFormValid, setIsFormValid] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
-
-  useEffect(( )=> {
-    console.log('form is submitting.', isSubmittingForm)
-  }, [isSubmittingForm])
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -26,28 +24,35 @@ export default function ContactForm() {
     let updateElement = { ...updateObject[eventName]};
     updateElement.touched = true;
     updateElement.value = eventValue;
-    //check and set word count
+    // set word count
     updateElement.wordCount = updateElement.value.length
     updateObject[eventName] = updateElement;
     setContactData(updateObject)
     //TODO: set check form validity
   }
 
-  const submitFormHandler = (e) => {
+  const submitFormHandler = async (e) => {
     e.preventDefault();
-    
-    console.log(isSubmittingForm)
-    // filter out form data's name and value to send to the api
-    const dataToSend = getFormValues(contactData);
-    //TODO: handle loader
-    //TODO: send data to endpoint when form is submitted
-    console.log(isSubmittingForm);
+    const mailData = getFormValues(contactData);
+    if(!mailData) return;
     setIsSubmittingForm(true); 
+    setStatusMessage('sending mail...')
+    console.log(isSubmittingForm);
+    // filter out form data's name and value to send to the api
+    try {
+      const sendMailResponse = await axios.post(`/sendmail`, mailData);
+      if(String(sendMailResponse.status)[0] === '2') {
+        setStatusMessage('succes');
+      } 
+    } catch (error) {
+        // handle failure
+        console.log(error);
+        setStatusMessage('failure + server error code/message');
+    }
+    //allow user to see loader and status message if axios request is too quick 
     setTimeout(() => {
-      console.log(isSubmittingForm)
-      console.log('simulate side effect...')
       setIsSubmittingForm(false); 
-    }, [2000] )
+    }, [1000] )
   }
 
   return (
@@ -59,7 +64,7 @@ export default function ContactForm() {
           {/* success icon */}
           {/* failure icon */}
         </div> 
-        <div className='form-statusmessage'> Status Mesage </div>
+        <div className='form-statusmessage'> {statusMessage} </div>
       </div> : null }
       <h2> Send a Message </h2>
       {buildForm(contactData).map((elem) => {
