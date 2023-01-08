@@ -24,20 +24,28 @@ export const contactFormData = {
     type: 'text',
     name: 'name',
     value: '',
+    placeholder: 'csiga biga',
     touched: false,
     valid: false,
-  },email: {
+  },
+  email: {
     fieldType: 'input',
     type: 'email',
     name: 'email',
     value: '',
+    placeholder: 'csiga@biga.com',
     touched: false,
     valid: false,
-  }, message: {
+  },
+   message: {
     fieldType: 'textarea',
     type: 'text',
     name: 'message',
     value: '',
+    placeholder: 'csiga biga gyere ki, ég a házad oda kint.',
+    minLength: 10,
+    maxLength: 500,
+    wordCount: 0,
     touched: false,
     valid: false,
   }

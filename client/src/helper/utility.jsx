@@ -13,14 +13,25 @@ export const findAnchorLink = (navigationData, itemToFind) => {
 
 //build input fields from contact form data
 export const buildForm = (formElements) => {
-  const formStructure = [];
+  const newFormArr = [];
   for(let element in formElements) {
-    formStructure.push({id: element, config: formElements[element]});
+    newFormArr.push({id: element, config: formElements[element]});
   }
-  return formStructure;
+  return newFormArr;
 } 
 
 // transform form data to a simple object only containing the input field name and its value
- export const getFormValues = (formElements) => {
+ export const getFormValues = (formData) => {
+  const newFormArr = [];
+  for(let element in formData) {
+    newFormArr.push({name: formData[element].name, value: formData[element].value});
+  }
+  return newFormArr;
+}
 
- }
+//character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)
+export const calcRemainingCharacters = (currentCharacters, maximumCharacters) => {
+  let remainingCharacters = maximumCharacters - currentCharacters;
+  remainingCharacters > 0 ? null : remainingCharacters = 'max character count reached'  
+  return remainingCharacters;
+}

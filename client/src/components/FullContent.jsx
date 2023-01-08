@@ -9,9 +9,9 @@ import Footer from '../layout/Footer'
 export default function Home() {
   return (
     <> 
-      <About calcHeight={'fullContent'}/>
-      <Projects calcHeight={'fullContent'}/>
-      <Contact calcHeight={'fullContent'}/>
+      <About pageLayout={'fullContentPage'}/>
+      <Projects pageLayout={'fullContentPage'}/>
+      <Contact pageLayout={'fullContentPage'}/>
       <Footer/>
     </>
   )

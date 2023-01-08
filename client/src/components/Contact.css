@@ -11,3 +11,22 @@
 .contact-container--minheight {
   min-height: 100vh;  
 }
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+@media (min-width: 1366px) {
+  .contact-content {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+}

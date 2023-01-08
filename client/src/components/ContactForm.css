@@ -7,22 +7,32 @@
   align-items: center;
   width: 100%;
   height: auto;
-  background-color: rgb(0, 0, 255);
+  background-color: rgba(161, 161, 163, 0.95);
   position: relative;
+}
+
+.form-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .form-container input,
 .form-container textarea,
 .form-container button,
+.form-charactercount,
 .form-statusmessage {
   margin: 1rem 0;
   padding: 1rem;
   width: 90%;
-  
 }
 
 .form-loadermodal {
   display: flex;
+  flex-direction: column ;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -30,7 +40,31 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(2, 192, 255, 0.529)
+  background-color: rgb(98, 98, 100);
+}
+
+.form-loader,
+.form-statusmessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-statusmessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem;
+  font-size: 1.5rem;
+}
+
+.form-loader {
+  flex-grow: 1;
+}
+
+.form-statusmessage {
+  height: 100px;
 }
 
 .form-container input {
@@ -39,16 +73,36 @@
 
 .form-container textarea {
   height: 250px;
+  resize: none;
+  text-align: justify;
 }
 
 .form-container button {
   height: 50px;
 }
 
-.form-statusmessage {
+.form-charactercount {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  height: 50px;
-  margin: 0rem;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1366px) {
+  .form-container {
+    width: 650px;
+    height: 650px;
+  }
+
+  .form-container input,
+  .form-container textarea,
+  .form-statusmessage {
+    margin-bottom: 0;
+  }
+
+  .form-container textarea {
+    flex-grow: 1;
+  }
 }
