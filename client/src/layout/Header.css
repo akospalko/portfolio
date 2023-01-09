@@ -21,7 +21,7 @@
 .layout-header-responsive {
   justify-content: space-between;
   height: var(--header_height);
-  background-color: rgb(193, 40, 170);
+  background-color: rgb(50, 45, 50);
 }
 /* responsive view */
 .header_responsive-menubar {
@@ -49,14 +49,14 @@
 /* navigation menu */
 .header_responsive-navmenu {
   flex-direction: column;
-  height: calc(100% - var(--header_height));
   position: absolute;
   top: var(--header_height);
   left: 0;
   bottom: 0;
   right: 0;
-  flex-grow: 1;
-  background-color: rgb(23, 33, 177);
+  flex-grow: 1; 
+  background-color: rgb(23, 177, 121);
+  z-index: 10;
 }
 
 .header, .dummy {

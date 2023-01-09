@@ -1,7 +1,5 @@
 import React from 'react'
 import './Projects.css' 
-import { findAnchorLink } from '../helper/utility'
-import { navElements } from '../helper/dataControl'
 import Anchor from './Anchor'
 
 export default function Projects({ pageLayout }) {

@@ -11,9 +11,23 @@ import Logo from '../assets/logo.svg';
 export default function Header() {
   const [toggled, setToggled] = useState(false); // menu bar toggle for responsive view
 
-  //toggle menu bar handler for responsive view
+  //toggle menu bar handler for responsive view, disable scroll for body
   const toggleHandler = () => {
-    setToggled(prev => !prev);
+    setToggled(prev => {
+      if(prev === true) {
+        // document.body.style.overflowY = 'scroll';
+        document.body.style.position = 'static';
+        document.body.style.removeProperty('width');
+
+      } else {
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+       
+        // document.body.style.overflowY = 'hidden';
+      }
+      return !prev}
+      );
+      console.log('toggle value', toggled)
   }
 
   //Conditional rendering header
