@@ -24,7 +24,7 @@ export const buildForm = (formElements) => {
  export const getFormValues = (formData) => {
   let newFormObj = {};
   for(let element in formData) {
-    newFormObj = {...newFormObj, [element]: formData[element].value}
+    newFormObj = {...newFormObj, [element]: formData[element].value};
   }
   return newFormObj;
 }
@@ -32,6 +32,6 @@ export const buildForm = (formElements) => {
 //character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)
 export const calcRemainingCharacters = (currentCharacters, maximumCharacters) => {
   let remainingCharacters = maximumCharacters - currentCharacters;
-  remainingCharacters > 0 ? null : remainingCharacters = 'max character count reached'  
+  remainingCharacters > 0 ? null : remainingCharacters = 'max character count reached';  
   return remainingCharacters;
 }

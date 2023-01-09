@@ -1,11 +1,13 @@
 /*
 TODO: button styling + disable 
+TODO: submit form reset form after succesful submit
+TODO: outsource status messages (data structure)
 */
 
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './ContactForm.css'
-import { contactFormData } from '../helper/dataControl'
+import { contactFormData, SENDING_EMAIL } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
 import Loader from '../assets/loader.svg'
 import axios from 'axios'
@@ -19,40 +21,36 @@ export default function ContactForm() {
 
   const changeHandler = (e) => {
     e.preventDefault();
-    const { name: eventName, value: eventValue } = e.target
+    const { name: eventName, value: eventValue } = e.target;
     let updateObject = { ...contactData };
     let updateElement = { ...updateObject[eventName]};
     updateElement.touched = true;
     updateElement.value = eventValue;
     // set word count
-    updateElement.wordCount = updateElement.value.length
+    updateElement.wordCount = updateElement.value.length;
     updateObject[eventName] = updateElement;
-    setContactData(updateObject)
+    setContactData(updateObject);
     //TODO: set check form validity
   }
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
-    const mailData = getFormValues(contactData);
+    const mailData = getFormValues(contactData); // prepare data to send -> filter out field name/value
     if(!mailData) return;
     setIsSubmittingForm(true); 
-    setStatusMessage('sending mail...')
-    console.log(isSubmittingForm);
+    setStatusMessage(SENDING_EMAIL);
     // filter out form data's name and value to send to the api
     try {
       const sendMailResponse = await axios.post(`/sendmail`, mailData);
-      if(String(sendMailResponse.status)[0] === '2') {
-        setStatusMessage('succes');
-      } 
+        setStatusMessage(`${sendMailResponse.data.statusMessage}`);
+        setContactData(contactFormData) // reset form to its initial state  
     } catch (error) {
-        // handle failure
-        console.log(error);
-        setStatusMessage('failure + server error code/message');
+        setStatusMessage(`${error.response.data.statusMessage} (${error.response.status})`);
     }
-    //allow user to see loader and status message if axios request is too quick 
+    //allow user to see loader and status message if request happens too quickly 
     setTimeout(() => {
       setIsSubmittingForm(false); 
-    }, [1000] )
+    }, [1000])
   }
 
   return (

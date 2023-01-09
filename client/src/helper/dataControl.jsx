@@ -37,6 +37,15 @@ export const contactFormData = {
     touched: false,
     valid: false,
   },
+  subject: {
+    fieldType: 'input',
+    type: 'text',
+    name: 'subject',
+    value: '',
+    placeholder: 'ég a házad',
+    touched: false,
+    valid: false,
+  },
    message: {
     fieldType: 'textarea',
     type: 'text',
@@ -50,3 +59,6 @@ export const contactFormData = {
     valid: false,
   }
 }
+
+//Status messages:
+export const SENDING_EMAIL = 'Sending email...' 
