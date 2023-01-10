@@ -1,3 +1,10 @@
+
+//social link icons:
+import GithubIcon from '../assets/social_link_github_2.svg'
+import LinkedInIcon from '../assets/social_link_linkedin.svg'
+
+
+//nav elements
 export const navElements = [
   {
     id: 1,
@@ -60,5 +67,19 @@ export const contactFormData = {
   }
 }
 
+export const socialLinks = [
+  {
+    id: 1,
+    icon: GithubIcon,
+    link: '',
+    altText: 'github icon'
+  }, {
+    id: 2,
+    icon: LinkedInIcon,
+    link: '',
+    altText: 'linkedIn icon'
+  }
+]
+
 //Status messages:
-export const SENDING_EMAIL = 'Sending email...' 
+export const SENDING_EMAIL = 'Sending email...';

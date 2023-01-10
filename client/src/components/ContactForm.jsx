@@ -1,7 +1,6 @@
 /*
-TODO: button styling + disable 
-TODO: submit form reset form after succesful submit
-TODO: outsource status messages (data structure)
+TODO: button styling + disable
+TODO: if server is not running we get -> undefined(500) as status message, fix status message  
 */
 
 import React from 'react'
@@ -26,8 +25,7 @@ export default function ContactForm() {
     let updateElement = { ...updateObject[eventName]};
     updateElement.touched = true;
     updateElement.value = eventValue;
-    // set word count
-    updateElement.wordCount = updateElement.value.length;
+    updateElement.wordCount = updateElement.value.length; // update word count
     updateObject[eventName] = updateElement;
     setContactData(updateObject);
     //TODO: set check form validity
@@ -39,7 +37,6 @@ export default function ContactForm() {
     if(!mailData) return;
     setIsSubmittingForm(true); 
     setStatusMessage(SENDING_EMAIL);
-    // filter out form data's name and value to send to the api
     try {
       const sendMailResponse = await axios.post(`/sendmail`, mailData);
         setStatusMessage(`${sendMailResponse.data.statusMessage}`);
@@ -54,8 +51,8 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submitFormHandler} className='form-container'>
-      {/* TODO: enable loader modal when msg is being sent */}
+    <form onSubmit={submitFormHandler} className='form'>
+      {/* enable loader modal when msg is being sent */}
       {isSubmittingForm ? <div className='form-loadermodal'> 
         <div className='form-loader'> 
           <img src={Loader} />
@@ -65,7 +62,7 @@ export default function ContactForm() {
         <div className='form-statusmessage'> {statusMessage} </div>
       </div> : null }
       <h2> Send a Message </h2>
-      {buildForm(contactData).map((elem) => {
+      { buildForm(contactData).map((elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 
             key={elem.id} 
@@ -92,7 +89,7 @@ export default function ContactForm() {
             </div>
           </div>
         }
-      })}
+      }) }
       <button disabled={false}> Send </button>
     </form>
   )

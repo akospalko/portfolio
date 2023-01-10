@@ -1,7 +1,7 @@
 
 /* form */
 
-.form-container,
+.form,
 .form-message,
 .form-loadermodal {
   display: flex;
@@ -11,8 +11,8 @@
   width: 100%;
 }
 
-.form-container {
-  height: auto;
+.form {
+  height: 650px;
   background-color: rgba(161, 161, 163, 0.95);
   position: relative;
 }
@@ -21,12 +21,12 @@
   height: 100%;
 }
 
-.form-container input,
-.form-container textarea,
-.form-container button,
+.form input,
+.form textarea,
+.form button,
 .form-charactercount,
 .form-statusmessage {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   padding: 1rem;
   width: 90%;
 }
@@ -58,20 +58,23 @@
 }
 
 .form-statusmessage {
-  height: 100px;
+  height: 75px;
 }
 
-.form-container input {
-  height: 50px;
+.form input {
+  height: 40px;
 }
 
-.form-container textarea {
+.form textarea {
   height: 250px;
   resize: none;
   text-align: justify;
+  flex-grow: 1;
 }
 
-.form-container button {
+.form button {
+  margin: 5% 0;
+  /* margin: 1rem 0; */
   height: 50px;
 }
 
@@ -79,24 +82,140 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 25px;
+  height: 20px;
   margin: 0;
   padding: 0;
 }
 
 @media (min-width: 1366px) {
-  .form-container {
-    width: 650px;
-    height: 650px;
+  .form {
+    width: 500px;
+    height: 600px;
   }
 
-  .form-container input,
-  .form-container textarea,
+  .form input,
+  .form textarea,
   .form-statusmessage {
     margin-bottom: 0;
   }
 
-  .form-container textarea {
-    flex-grow: 1;
+  .form textarea {
+    /* flex-grow: 1; */
   }
+}
+
+
+
+/* css background */
+
+@keyframes animate {
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #4e54c8;
+  overflow: hidden;
+}
+.background li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 33s linear infinite;
+}
+
+.background li:nth-child(0) {
+  left: 10%;
+  width: 60px;
+  height: 60px;
+  bottom: -60px;
+  animation-delay: 1s;
+}
+.background li:nth-child(1) {
+  left: 63%;
+  width: 55px;
+  height: 55px;
+  bottom: -55px;
+  animation-delay: 5s;
+}
+.background li:nth-child(2) {
+  left: 3%;
+  width: 102px;
+  height: 102px;
+  bottom: -102px;
+  animation-delay: 3s;
+}
+.background li:nth-child(3) {
+  left: 56%;
+  width: 102px;
+  height: 102px;
+  bottom: -102px;
+  animation-delay: 11s;
+}
+.background li:nth-child(4) {
+  left: 19%;
+  width: 63px;
+  height: 63px;
+  bottom: -63px;
+  animation-delay: 2s;
+}
+.background li:nth-child(5) {
+  left: 20%;
+  width: 117px;
+  height: 117px;
+  bottom: -117px;
+  animation-delay: 9s;
+}
+.background li:nth-child(6) {
+  left: 81%;
+  width: 124px;
+  height: 124px;
+  bottom: -124px;
+  animation-delay: 28s;
+}
+.background li:nth-child(7) {
+  left: 34%;
+  width: 112px;
+  height: 112px;
+  bottom: -112px;
+  animation-delay: 28s;
+}
+.background li:nth-child(8) {
+  left: 20%;
+  width: 57px;
+  height: 57px;
+  bottom: -57px;
+  animation-delay: 33s;
+}
+.background li:nth-child(9) {
+  left: 37%;
+  width: 102px;
+  height: 102px;
+  bottom: -102px;
+  animation-delay: 26s;
+}
+.background li:nth-child(10) {
+  left: 53%;
+  width: 131px;
+  height: 131px;
+  bottom: -131px;
+  animation-delay: 22s;
 }

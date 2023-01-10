@@ -1,7 +1,9 @@
 import React from 'react'
 import './Footer.css'
+import '../components/Shared.css'
 import Logo from '../assets/logo.svg'
-import { navElements } from '../helper/dataControl'
+import { navElements, socialLinks } from '../helper/dataControl'
+
 
 export default function Footer() {
   const footer = 
@@ -20,13 +22,15 @@ export default function Footer() {
       )) }
     </ul>
     {/* social links */}
-    <div className='footer-sociallinks'>
-      <a href=''>  
-        <img src={Logo} alt="logo"/>
-      </a>
-      <a href=''>  
-        <img src={Logo} alt="logo"/>
-      </a>
+    <div className='shared-sociallinks footer-sociallinks--added_margin'>
+      { socialLinks.map(link => (
+        <a 
+          key={link.id}
+          href={link.link}
+        >  
+          <img src={link.icon} alt={link.altText}/>
+        </a>
+      )) }
     </div>
     {/* info */}
     <div className='footer-info'>
