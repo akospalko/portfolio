@@ -1,0 +1,16 @@
+.contact-space-cat,
+.contact-space-cat img {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: -89px;
+  user-select: none;
+}
+
+.contact-space-cat-eyes {
+  position: absolute;
+}
+
+/* @media (min-width: 1366px) {
+
+} */

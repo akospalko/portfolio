@@ -4,6 +4,8 @@ import './Shared.css'
 import Anchor from './Anchor'
 import ContactForm from './ContactForm'
 import { socialLinks } from '../helper/dataControl'
+import SpaceCat from './SpaceCat'
+
 
 export default function Contact({ pageLayout }) {
   //conditional render height of the page based on if it is displayed as a single component vs together with other components
@@ -32,9 +34,10 @@ export default function Contact({ pageLayout }) {
         <div className='contact-group_1'> 
           {/* background */}
           <div className='contact-background'>
+
             {/* Astrounaut bckg */}
             <div className="backg">
-            <div className="planet">
+              <div className="planet">
                 <div className="r1"></div>
                 <div className="r2"></div>
                 <div className="r3"></div>
@@ -118,6 +121,7 @@ export default function Contact({ pageLayout }) {
           </div>
           {/* contact form */}
           <div className='contact-form-container'>
+            <SpaceCat/>
             <ContactForm/>
           </div>
         </div>
