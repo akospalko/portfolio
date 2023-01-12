@@ -1,5 +1,16 @@
-.contact-space-cat,
-.contact-space-cat img {
+.space-cat-proximity-hover { 
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: -200px;
+  user-select: none;
+  transition: transform .4s;
+  background-color: transparent;
+  z-index: 3;
+}
+
+.space-cat,
+.space-cat img {
   width: 150px;
   height: auto;
   position: absolute;
@@ -7,10 +18,21 @@
   user-select: none;
 }
 
-.contact-space-cat-eyes {
-  position: absolute;
+.space-cat  {
+  transition: transform .4s;
 }
 
-/* @media (min-width: 1366px) {
+.space-cat-proximity-hover:hover {
+  transform: scale(1.5);
+}
 
-} */
+.space-cat-proximity-hover:hover + .space-cat {
+
+  transform: translateY(80px);
+  background-color: rgb(89, 226, 121);
+
+}
+
+.space-cat-eyes {
+  position: absolute;
+}

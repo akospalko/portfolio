@@ -31,7 +31,7 @@ export default function SpaceCat() {
     const angleValue = calcAngle(mousePosition.x, mousePosition.y, anchorX, anchorY);
     console.log(angleValue);
     //rotate  eyes
-    const eyes = document.querySelectorAll('.contact-space-cat-eye');
+    const eyes = document.querySelectorAll('.space-cat-eye');
     eyes.forEach(eye => {
       eye.style.transform = `rotate(${ -90 + angleValue }deg)`
     })
@@ -43,12 +43,16 @@ export default function SpaceCat() {
   }, [mousePosition])
 
   return (
-    <div className='contact-space-cat'>
-      <img id='anchor' src={spaceCat} />
-      <div className='contact-space-cat-eyes'>
-        <img className='contact-space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '-31px', 'right': '-57px'}}/>
-        <img className='contact-space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '-31px', 'right': '-107px'}}/>
+    <>
+    <div className='space-cat-proximity-hover'> </div> 
+      <div className='space-cat'>
+        <img id='anchor' src={spaceCat} /> 
+        <div className='space-cat-eyes'>
+          <img className='space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '-31px', 'right': '-57px'}}/>
+          <img className='space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '-31px', 'right': '-107px'}}/>
+        </div>
       </div>
-    </div>
+ 
+    </>
   )
 }
