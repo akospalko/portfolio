@@ -27,7 +27,7 @@
 .form-statusmessage {
   margin: 0.5rem 0;
   padding: 1rem;
-  width: 90%;
+  width: 95%;
 }
 
 .form-loadermodal {
@@ -72,8 +72,6 @@
 }
 
 .form button {
-  margin: 5% 0;
-  /* margin: 1rem 0; */
   height: 50px;
 }
 
@@ -89,7 +87,8 @@
 @media (min-width: 1366px) {
   .form {
     width: 500px;
-    height: 600px;
+    height: 500px;
+    z-index: 3;
   }
 
   .form input,
@@ -99,6 +98,12 @@
   }
 
   .form textarea {
-    /* flex-grow: 1; */
+    flex-grow: 0;
   }
+
+  .form button {
+    height: 50px;
+    margin: 0.5;
+  }
+  
 }

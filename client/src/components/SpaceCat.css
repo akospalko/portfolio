@@ -1,12 +1,65 @@
+.space-cat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.space-cat-text-bubble {
+  position: relative;
+  width: 300px;
+  height: 195px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -265px;
+  z-index:2;
+}
+.space-cat-text-bubble-text {
+  position: absolute;
+  user-select: none;
+  background-color: grey;
+  border-radius: 25px;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-cat-text-bubble-text p {
+  font-size: 1.2rem;
+}
+
+.space-cat-text-bubble-1 {
+  width: 50px;
+  height: 20px;
+  position: absolute;
+  border-radius: 25px;
+  background-color: grey;
+  left: 150px;
+  bottom: 20px;
+}
+.space-cat-text-bubble-2 {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border-radius: 50px;
+  left: 152px;
+  bottom: -10px;
+  background-color: grey;
+}
+
 .space-cat-proximity-hover { 
   width: 200px;
   height: 200px;
   position: absolute;
-  top: -200px;
   user-select: none;
   transition: transform .4s;
   background-color: transparent;
-  z-index: 3;
+  z-index: 4;
 }
 
 .space-cat,
@@ -14,8 +67,9 @@
   width: 150px;
   height: auto;
   position: absolute;
-  top: -89px;
+  top: 111px;
   user-select: none;
+  z-index:2;
 }
 
 .space-cat  {
@@ -27,12 +81,105 @@
 }
 
 .space-cat-proximity-hover:hover + .space-cat {
-
-  transform: translateY(80px);
-  background-color: rgb(89, 226, 121);
-
+  transform: translateY(85px);
 }
 
 .space-cat-eyes {
-  position: absolute;
+  position: static;
+}
+
+@media (min-width: 1366px) {
+  .space-cat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .space-cat-text-bubble {
+    position: relative;
+    width: 300px;
+    height: 195px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -126px;
+    z-index:2;
+  }
+  .space-cat-text-bubble-text {
+    /* position: absolute; */
+    user-select: none;
+    background-color: grey;
+    border-radius: 25px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .space-cat-text-bubble-text p {
+    font-size: 1.2rem;
+  }
+
+  .space-cat-text-bubble-1 {
+    width: 50px;
+    height: 20px;
+    /* position: absolute; */
+    border-radius: 25px;
+    background-color: grey;
+    left: 150px;
+    bottom: 20px;
+  }
+  .space-cat-text-bubble-2 {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border-radius: 50px;
+    left: 152px;
+    bottom: -10px;
+    background-color: grey;
+  }
+
+  .space-cat-proximity-hover { 
+    width: 200px;
+    height: 200px;
+    /* position: static; */
+    top: 100px;
+    position: absolute;
+    user-select: none;
+    transition: transform .4s;
+    background-color: transparent;
+    z-index: 4;
+  }
+
+  .space-cat,
+  .space-cat img {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    user-select: none;
+    top: 61px;
+    z-index:2;
+  }
+  .space-cat  {
+    transition: transform .4s;
+  }
+  .space-cat-proximity-hover:hover {
+    transform: scale(1.5);
+  }
+  .space-cat-proximity-hover:hover + .space-cat {
+    transform: translateY(85px);
+  }
+  .space-cat-eyes {
+    position: absolute;
+  }
+  .space-cat-eye:first-child {
+
+  }
+  .space-cat-eye:last-child {
+
+  }
 }

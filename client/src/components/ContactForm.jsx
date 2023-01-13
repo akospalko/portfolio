@@ -61,7 +61,7 @@ export default function ContactForm() {
         </div> 
         <div className='form-statusmessage'> {statusMessage} </div>
       </div> : null }
-      <h2> Send a Message </h2>
+      {/* <h2> Send a Message </h2> */}
       { buildForm(contactData).map((elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 
