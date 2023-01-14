@@ -24,8 +24,8 @@ export default function SpaceCat() {
   useEffect(() => {
     const anchor = document.getElementById('anchor'); //get anchor item which is our space cat image
     const anchorBoundingBox = anchor.getBoundingClientRect();  // create an invisible box around the anchor image
-    const anchorX = anchorBoundingBox.left + anchorBoundingBox.width / 2 ;   // get the x,y coordinates of the center of the box 
-    const anchorY = anchorBoundingBox.top + anchorBoundingBox.height / 2 ; 
+    const anchorX = anchorBoundingBox.left + anchorBoundingBox.width / 2;   // get the x,y coordinates of the center of the box 
+    const anchorY = anchorBoundingBox.top + anchorBoundingBox.height / 2; 
 
     //store calculated angle value
     const angleValue = calcAngle(mousePosition.x, mousePosition.y, anchorX, anchorY);
@@ -60,3 +60,4 @@ export default function SpaceCat() {
     </div>
   )
 }
+ 

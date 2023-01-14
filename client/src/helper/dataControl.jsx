@@ -1,12 +1,15 @@
-
 //social link icons:
 import GithubIcon from '../assets/social_link_github_2.svg'
 import LinkedInIcon from '../assets/social_link_linkedin.svg'
 
-
 //nav elements
 export const navElements = [
   {
+    id: 0,
+    name: 'home',
+    path: '/',
+    anchorLink: '#home'
+  }, {
     id: 1,
     name: 'about',
     path: '/about',
@@ -31,7 +34,7 @@ export const contactFormData = {
     type: 'text',
     name: 'name',
     value: '',
-    placeholder: 'csiga biga',
+    placeholder: 'your name',
     touched: false,
     valid: false,
   },
@@ -40,7 +43,7 @@ export const contactFormData = {
     type: 'email',
     name: 'email',
     value: '',
-    placeholder: 'csiga@biga.com',
+    placeholder: 'your@email.com',
     touched: false,
     valid: false,
   },
@@ -49,18 +52,18 @@ export const contactFormData = {
     type: 'text',
     name: 'subject',
     value: '',
-    placeholder: 'ég a házad',
+    placeholder: 'mail subject',
     touched: false,
     valid: false,
   },
    message: {
     fieldType: 'textarea',
     type: 'text',
-    name: 'message',
+    name: 'your message',
     value: '',
     placeholder: 'csiga biga gyere ki, ég a házad oda kint.',
     minLength: 10,
-    maxLength: 500,
+    maxLength: 1500,
     wordCount: 0,
     touched: false,
     valid: false,

@@ -23,6 +23,7 @@ export default function ContactForm() {
     const { name: eventName, value: eventValue } = e.target;
     let updateObject = { ...contactData };
     let updateElement = { ...updateObject[eventName]};
+    console.log(eventValue)
     updateElement.touched = true;
     updateElement.value = eventValue;
     updateElement.wordCount = updateElement.value.length; // update word count
@@ -75,7 +76,7 @@ export default function ContactForm() {
         } else if (elem.config.fieldType === 'textarea') {
           return <div 
           className='form-message'
-          key={elem.id} >
+          key={elem.id}>
             <textarea 
               onChange={changeHandler} 
               type={elem.config.type} 
