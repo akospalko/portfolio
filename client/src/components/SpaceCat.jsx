@@ -53,8 +53,8 @@ export default function SpaceCat() {
       <div className='space-cat'>
         <img id='anchor' src={spaceCat} /> 
         <div className='space-cat-eyes'>
-          <img className='space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '119px', 'right': '-57px'}}/>
-          <img className='space-cat-eye' src={spaceCatEye} style={{'width': '16px', 'height': '16px', 'top': '119px', 'right': '-107px'}}/>
+          <img id='eye-1' className='space-cat-eye' src={spaceCatEye} />
+          <img id='eye-2' className='space-cat-eye' src={spaceCatEye} />
         </div>
       </div>
     </div>

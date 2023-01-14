@@ -65,7 +65,7 @@
 }
 
 .form textarea {
-  height: 250px;
+  height: 200px;
   resize: none;
   text-align: justify;
   flex-grow: 1;
@@ -84,6 +84,29 @@
   padding: 0;
 }
 
+@media (min-width: 768px) {
+  .form {
+    width: 100%;
+    height: 500px;
+    z-index: 3;
+  }
+
+  .form input,
+  .form textarea,
+  .form-statusmessage {
+    margin-bottom: 0;
+  }
+
+  .form input:first-child {
+    margin-top: 1rem;
+  }
+
+  .form button {
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (min-width: 1366px) {
   .form {
     width: 500px;
@@ -97,13 +120,13 @@
     margin-bottom: 0;
   }
 
-  .form textarea {
-    flex-grow: 0;
+  .form input:first-child {
+    margin-top: 1rem;
   }
 
   .form button {
     height: 50px;
-    margin: 0.5;
+    margin-bottom: 1rem;
   }
   
 }

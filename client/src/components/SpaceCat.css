@@ -1,49 +1,45 @@
-.space-cat-container {
+.space-cat-container,
+.space-cat-text-bubble,
+.space-cat-text-bubble-text {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
-  width: 100%;
+  flex-direction: column;
+}
+.space-cat-container {
+  height: 400px;
   position: relative;
 }
-
 .space-cat-text-bubble {
   position: relative;
   width: 300px;
   height: 195px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: -265px;
-  z-index:2;
+  top: -126px;
+  z-index: 2;
 }
 .space-cat-text-bubble-text {
-  position: absolute;
   user-select: none;
   background-color: grey;
   border-radius: 25px;
   width: 300px;
   height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
 }
-
 .space-cat-text-bubble-text p {
   font-size: 1.2rem;
 }
-
 .space-cat-text-bubble-1 {
   width: 50px;
-  height: 20px;
+  height: 25px;
   position: absolute;
   border-radius: 25px;
   background-color: grey;
   left: 150px;
-  bottom: 20px;
+  bottom: 15px;
 }
 .space-cat-text-bubble-2 {
-  width: 15px;
+  width: 20px;
   height: 15px;
   position: absolute;
   border-radius: 50px;
@@ -51,17 +47,9 @@
   bottom: -10px;
   background-color: grey;
 }
-
-.space-cat-proximity-hover { 
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  user-select: none;
-  transition: transform .4s;
-  background-color: transparent;
-  z-index: 4;
+.space-cat-proximity-hover {
+  display: none;
 }
-
 .space-cat,
 .space-cat img {
   width: 150px;
@@ -71,82 +59,42 @@
   user-select: none;
   z-index:2;
 }
-
 .space-cat  {
   transition: transform .4s;
 }
-
 .space-cat-proximity-hover:hover {
   transform: scale(1.5);
 }
-
 .space-cat-proximity-hover:hover + .space-cat {
   transform: translateY(85px);
 }
-
 .space-cat-eyes {
-  position: static;
+  position: absolute;
+}
+#eye-1 {
+  width: 16px;
+  height: 16px;
+  top: 169px;
+  right: -57px;
+}
+#eye-2 {
+  width: 16px;
+  height: 16px;
+  top: 169px;
+  right: -107px;
 }
 
 @media (min-width: 1366px) {
   .space-cat-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 300px;
-    width: 100%;
-    position: relative;
-    flex-direction: column;
   }
-
-  .space-cat-text-bubble {
-    position: relative;
-    width: 300px;
-    height: 195px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -126px;
-    z-index:2;
-  }
-  .space-cat-text-bubble-text {
-    /* position: absolute; */
-    user-select: none;
-    background-color: grey;
-    border-radius: 25px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .space-cat-text-bubble-text p {
     font-size: 1.2rem;
   }
-
-  .space-cat-text-bubble-1 {
-    width: 50px;
-    height: 20px;
-    /* position: absolute; */
-    border-radius: 25px;
-    background-color: grey;
-    left: 150px;
-    bottom: 20px;
-  }
-  .space-cat-text-bubble-2 {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    border-radius: 50px;
-    left: 152px;
-    bottom: -10px;
-    background-color: grey;
-  }
-
   .space-cat-proximity-hover { 
+    display: flex;
     width: 200px;
     height: 200px;
-    /* position: static; */
     top: 100px;
     position: absolute;
     user-select: none;
@@ -154,32 +102,20 @@
     background-color: transparent;
     z-index: 4;
   }
-
   .space-cat,
   .space-cat img {
-    width: 150px;
-    height: auto;
-    position: absolute;
-    user-select: none;
     top: 61px;
-    z-index:2;
   }
-  .space-cat  {
-    transition: transform .4s;
+  #eye-1 {
+    width: 16px;
+    height: 16px;
+    top: 119px;
+    right: -57px;
   }
-  .space-cat-proximity-hover:hover {
-    transform: scale(1.5);
-  }
-  .space-cat-proximity-hover:hover + .space-cat {
-    transform: translateY(85px);
-  }
-  .space-cat-eyes {
-    position: absolute;
-  }
-  .space-cat-eye:first-child {
-
-  }
-  .space-cat-eye:last-child {
-
+  #eye-2 {
+    width: 16px;
+    height: 16px;
+    top: 119px;
+    right: -107px;
   }
 }
