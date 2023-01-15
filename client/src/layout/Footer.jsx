@@ -16,7 +16,7 @@ export default function Footer() {
         href={elem.anchorLink}
         > 
           <li id={elem.name}> 
-            <p> {elem.name} </p> 
+            <span> {elem.name} </span> 
           </li>    
         </a>
       )) }

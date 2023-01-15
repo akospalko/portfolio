@@ -1,5 +1,6 @@
 .footer-container,
 .footer-navlinks,
+.footer-navlinks a,
 .footer-navlinks li,
 /* .shared-sociallinks, */
 .footer-info,
@@ -33,7 +34,7 @@
   font-size: clamp(1.2rem, 1.3rem, 1.5rem);
 }
 
-.footer-navlinks li:hover p {
+.footer-navlinks li:hover span {
   transform: scale(1.1);
 }
 
@@ -88,6 +89,10 @@
     /* border-left: 2px solid white; */
     border-right: 2px solid white;
   }
+  .footer-navlinks li {
+    height: 25px;
+  }
+
   .footer-info {
     width: 25%;
     border-left: 2px solid white;

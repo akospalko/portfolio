@@ -23,7 +23,6 @@ export default function ContactForm() {
     const { name: eventName, value: eventValue } = e.target;
     let updateObject = { ...contactData };
     let updateElement = { ...updateObject[eventName]};
-    console.log(eventValue)
     updateElement.touched = true;
     updateElement.value = eventValue;
     updateElement.wordCount = updateElement.value.length; // update word count
