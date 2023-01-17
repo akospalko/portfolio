@@ -79,6 +79,7 @@
   height: 50px;
   width: 50px;
   margin: 0.5rem;
+  user-select: none;
 }
 .about-section-group-header h3 {
   flex-grow: 1;

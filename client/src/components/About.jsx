@@ -1,6 +1,7 @@
 import React from 'react'
 import './About.css'
 import Anchor from './Anchor';
+import { aboutSkills } from '../helper/dataControl'
 import CodeIcon from '../assets/code.svg'
 import GISIcon from '../assets/gis_2.svg'
 import LanguageIcon from '../assets/language.svg'
@@ -35,72 +36,29 @@ export default function About({ pageLayout }) {
         <section className='about-section skillset'>
           <h2> Skillset </h2>
           <div className='about-section-content'>
-            {/* group 1 */}
-            <div id='group-1' className='about-section-group'>
-              <div className='about-section-group-flex-wrapper'> 
-                <div className='about-section-group-header'>
-                  <img src={ CodeIcon } alt='programming icon'/>
-                  <h3> Web development && programming </h3>
+
+
+
+            { aboutSkills.map((elem) => (
+              //groups 
+              <div key={ elem.id } id={ elem.id } className={`about-section-group ${elem.size}`}>
+                <div className='about-section-group-flex-wrapper'> 
+                  <div className='about-section-group-header'>
+                    <img src={ elem.icon } alt={ elem.iconAlt }/>
+                    <h3> { elem.title } </h3>
+                  </div>
+                  { elem.content.map((content) => {  
+                    return <div key={ content.id } className='about-section-group-content'>
+                      <span> { content.title } </span> 
+                      <p> { content.text } </p> 
+                    </div>
+                  })}
+                  {/* <span> { elem.content.title } </span> 
+                  <p> { elem.content.text } </p> */}
                 </div>
-                <div className='about-section-group-content'>
-                  <span> Web </span>
-                  <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. 
-                  </p>
-                  <span> Database </span>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.  </p>
-                  <span> Others </span>
-                  <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.  
-                  </p>
-                </div>
-              </div>
-            </div>
-            {/* group 2 */}
-            <div id='group-2' className='about-section-group'>
-              <div className='about-section-group-flex-wrapper'> 
-                <div className='about-section-group-header'>
-                  <img src={ GISIcon } alt='programming icon'/>
-                  <h3> GIS and CAD systems, 3D visualization </h3>
-                </div>
-                <div className='about-section-group-content'>
-                  <span> GIS </span>
-                  <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. 
-                  </p>
-                  <span> CAD </span>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.  </p>
-                  <span> Others </span>
-                  <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.  </p>
-                </div>
-              </div>
-            </div>
-            {/* group 3 */}
-            <div id='group-3' className='about-section-group small'>
-              <div className='about-section-group-flex-wrapper'> 
-                <div className='about-section-group-header'>
-                  <img src={ OtherIcon } alt='programming icon'/>
-                  <h3> Other </h3>
-                </div>
-                <div className='about-section-group-content'>
-                  <p> 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. 
-                  </p>
-                </div>
-              </div>
-            </div>
-            {/* group 4 */}
-            <div id='group-4' className='about-section-group small'>
-              <div className='about-section-group-flex-wrapper'> 
-                <div className='about-section-group-header'>
-                  <img src={ LanguageIcon }/>
-                  <h3> Language </h3>
-                </div>
-                <div className='about-section-group-content'>
-                  <p> Arabic (professional), English(professional), German (intermediate), Korean (elementary) </p>
-                </div>
-              </div>
-            </div>
+              </div> 
+            ))}
+         
           </div>
         </section>
         {/* page section 3 */}

@@ -1,6 +1,12 @@
 //social link icons:
 import GithubIcon from '../assets/social_link_github_2.svg'
 import LinkedInIcon from '../assets/social_link_linkedin.svg'
+//about skill card icons:
+import CodeIcon from '../assets/code.svg'
+import GISIcon from '../assets/gis_2.svg'
+import LanguageIcon from '../assets/language.svg'
+import OtherIcon from '../assets/other.svg'
+
 
 //nav elements
 export const navElements = [
@@ -81,6 +87,78 @@ export const socialLinks = [
     icon: LinkedInIcon,
     link: '',
     altText: 'linkedIn icon'
+  }
+]
+
+
+export const aboutSkills = [
+  {
+    id: 'group-1',
+    icon: CodeIcon,
+    iconAlt: 'Web develpoment & Programming',
+    title: 'Web development && programming',
+    content: [
+      {
+        id: 1,
+        title: 'Web',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 2,
+        title: 'Database',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 3,
+        title: 'Others',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+    ]
+  },
+  {
+    id: 'group-2',
+    icon: GISIcon,
+    iconAlt: 'GIS and CAD systems, 3D visualization',
+    title: 'GIS and CAD systems, 3D visualization',
+    content: [
+      {
+        id: 1,
+        title: 'GIS',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 2,
+        title: 'CAD',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 3,
+        title: 'Others',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+    ]
+  }, {
+    id: 'group-3',
+    icon: LanguageIcon,
+    iconAlt: 'Language',
+    title: 'Language',
+    content: [
+      {
+        id: 1,
+        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
+      }
+    ]
+  }, {
+    id: 'group-4',
+    icon: OtherIcon,
+    iconAlt: 'Other',
+    title: 'Other',
+    content: [
+      {
+        id: 1,
+        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
+      }
+    ]
   }
 ]
 
