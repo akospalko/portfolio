@@ -7,7 +7,6 @@ import GISIcon from '../assets/gis_2.svg'
 import LanguageIcon from '../assets/language.svg'
 import OtherIcon from '../assets/other.svg'
 
-
 //nav elements
 export const navElements = [
   {
@@ -90,7 +89,6 @@ export const socialLinks = [
   }
 ]
 
-
 export const aboutSkills = [
   {
     id: 'group-1',
@@ -161,6 +159,33 @@ export const aboutSkills = [
     ]
   }
 ]
+
+export const projectCards = [
+  {
+    id: 1,
+    githubRepositoryLink: [ //fronten link, backend link
+      { id: 1, title: 'Frontend', link: 'https://github.com/akospalko/task-manager-client' },
+      { id: 2, title: 'Backend', link: 'https://github.com/akospalko/task-manager-api'},
+    ],
+    websiteLink: 'https://task-manager-client.onrender.com/',
+    thumbnail: '',
+    title: 'Task manager',
+    info: [
+      { id: 1, title: 'Description', text: 'Manage and store your daily tasks in a database' },
+      { id: 2, title: 'Used technologies', text: 'React, NodeJS, CSS, Postman, MongoDB, Mongoose'}
+    ]
+  },
+  {
+    id: 2,
+    githubRepositoryLink: ['https://github.com/akospalko/nodejs-tutorial/tree/master/03-task-manager/starter'], //fronten link
+    websiteLink: 'dummy link',
+    thumbnail: '',
+    info: [
+      { id: 1, title: 'Description', text: 'test' },
+      { id: 2, title: 'Used technologies', text: 'test test'},
+    ]
+  }
+] 
 
 //Status messages:
 export const SENDING_EMAIL = 'Sending email...';

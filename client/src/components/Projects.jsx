@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Projects.css' 
 import Anchor from './Anchor'
+import ProjectCard from './ProjectCard';
+import { projectCards } from '../helper/dataControl'
 
 export default function Projects({ pageLayout }) {
-  const componentName = 'projects';
-  //conditional render height of the page based on if it is displayed as a single component vs together with other components
+  const [toggleCard, setToggleCard] = useState({
+    1: {toggledInfo: false, toggledRepoLinks: false}
+  });
   let componentContainer = 'projects-container';
   pageLayout === 'fullContentPage' ?  
   componentContainer = ['projects-container', 'projects-container--minheight'].join(' ')
@@ -14,8 +17,31 @@ export default function Projects({ pageLayout }) {
     <article className={ componentContainer }>
       {/* anchor tag for full content page */}
       { pageLayout === 'fullContentPage' ? <Anchor componentName='projects' /> : null }
-      <h2>WWF History</h2>
-      <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+      <div className='projects-content'>
+        {/* Page title */}
+        <div className='projects-title'>
+          <h1> Projects </h1>
+        </div>
+        <div className='projects-text'>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend. </p>
+        </div>
+        <div className='projects-display'>
+          <div className='projects-display-content'>
+            { projectCards.map(card => (
+              <div 
+                className='projects-display-group'
+                key={card.id}
+              > 
+                <ProjectCard  
+                  toggle={ toggleCard }
+                  setToggle={ setToggleCard }
+                  data={{ ...card }}
+                /> 
+              </div> 
+            )) }
+          </div>
+        </div>
+      </div>
     </article>
   )
 }

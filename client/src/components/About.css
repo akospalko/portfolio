@@ -41,7 +41,7 @@
 .about-section {
   padding: 0.5rem;
 }
-.about-section > h2, p {
+.about-section > h2, .about-section > p {
   padding: 0.5rem;
   text-align: justify;
 }

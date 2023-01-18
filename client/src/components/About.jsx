@@ -2,11 +2,6 @@ import React from 'react'
 import './About.css'
 import Anchor from './Anchor';
 import { aboutSkills } from '../helper/dataControl'
-import CodeIcon from '../assets/code.svg'
-import GISIcon from '../assets/gis_2.svg'
-import LanguageIcon from '../assets/language.svg'
-import OtherIcon from '../assets/other.svg'
-
 
 export default function About({ pageLayout }) {
     //conditional render height of the page based on if it is displayed as a single component vs together with other components
@@ -36,12 +31,9 @@ export default function About({ pageLayout }) {
         <section className='about-section skillset'>
           <h2> Skillset </h2>
           <div className='about-section-content'>
-
-
-
             { aboutSkills.map((elem) => (
               //groups 
-              <div key={ elem.id } id={ elem.id } className={`about-section-group ${elem.size}`}>
+              <div key={ elem.id } id={ elem.id } className='about-section-group'>
                 <div className='about-section-group-flex-wrapper'> 
                   <div className='about-section-group-header'>
                     <img src={ elem.icon } alt={ elem.iconAlt }/>
@@ -53,19 +45,16 @@ export default function About({ pageLayout }) {
                       <p> { content.text } </p> 
                     </div>
                   })}
-                  {/* <span> { elem.content.title } </span> 
-                  <p> { elem.content.text } </p> */}
                 </div>
               </div> 
             ))}
-         
           </div>
         </section>
         {/* page section 3 */}
         <section className='about-section hobbies'> 
           <h2> Hobbies and interests </h2>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend.
           </p>
         </section>
       </div>
