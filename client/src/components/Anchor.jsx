@@ -3,13 +3,19 @@ import React from 'react'
 import './Shared.css'
 import { findAnchorLink } from '../helper/utility'
 import { navElements } from '../helper/dataControl'
-import AnchorIcon from '../assets/anchor.svg'
+import { AnchorIcon } from './SVGComponent'
 
 export default function Anchor({ componentName }) {
+  const anchorName = findAnchorLink(navElements, componentName).name;
   return (
     <div className='shared-anchor'>
-      <a href={findAnchorLink(navElements, componentName).anchorLink}>
-        <img id={findAnchorLink(navElements, componentName).name} src={AnchorIcon} alt="anchor"/>
+      <a id={ anchorName } href={ `#${ anchorName }` }>
+        <AnchorIcon 
+          id={ anchorName }
+          width={50} 
+          height={50}
+          stroke={'var(--color_5)'}
+        /> 
       </a>
     </div>
   )

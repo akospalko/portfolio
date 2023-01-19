@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import './Projects.css' 
+import './Shared.css' 
 import Anchor from './Anchor'
 import ProjectCard from './ProjectCard';
 import { projectCards } from '../helper/dataControl'
 
 export default function Projects({ pageLayout }) {
-  const [toggleCard, setToggleCard] = useState({
-    1: {toggledInfo: false, toggledRepoLinks: false}
-  });
-  let componentContainer = 'projects-container';
+  const [toggleCard, setToggleCard] = useState({});
+  let componentContainer = 'shared-page-container';
   pageLayout === 'fullContentPage' ?  
-  componentContainer = ['projects-container', 'projects-container--minheight'].join(' ')
+  componentContainer = ['shared-page-container','shared-page-container--minheight'].join(' ')
   : null;  
-
+  
   return (
     <article className={ componentContainer }>
       {/* anchor tag for full content page */}

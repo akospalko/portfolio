@@ -1,33 +1,39 @@
 // Header for all layouts
 import React from 'react';
 import './Header.css';
-import MenuOpen from '../assets/menu-bar.svg';
-import MenuClose from '../assets/close.svg';
+import Logo from '../assets/logo.svg';
+import { MenuOpenIcon, MenuCloseIcon } from '../components/SVGComponent';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import Navigation from './Navigation';
-import Logo from '../assets/logo.svg';
 
 export default function Header() {
   const [toggled, setToggled] = useState(false); // menu bar toggle for responsive view
 
   //toggle menu bar handler for responsive view, disable scroll for body
-  const toggleHandler = () => {
+  const toggleMenuHandler = (mode) => {
     setToggled(prev => {
       if(prev === true) {
-        // document.body.style.overflowY = 'scroll';
         document.body.style.position = 'static';
         document.body.style.removeProperty('width');
-
       } else {
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-       
-        // document.body.style.overflowY = 'hidden';
       }
-      return !prev}
-      );
-      console.log('toggle value', toggled)
+        return !prev;
+    });
+  }
+  //close menu and remove active menubar styles when clicking on home logo   
+  const closeMenuHandler = () => {
+    setToggled(prev => {
+      if(prev === true) {
+        document.body.style.position = 'static';
+        document.body.style.removeProperty('width');
+        return !prev;
+      } else {
+        return prev;
+      }
+    });
   }
 
   //Conditional rendering header
@@ -36,27 +42,36 @@ export default function Header() {
     <div className={'layout-header-responsive'}>
       <div 
         className='header_responsive-menubar'
-        onClick={toggleHandler}
+        onClick={ toggleMenuHandler }
       > 
         {toggled ? 
-          <img src={MenuClose} alt='menu bar close'/>
-          :
-          <img src={MenuOpen} alt='menu bar open'/>
+          <MenuCloseIcon 
+            height={35} 
+            width={35} 
+            stroke={'var(--color_5)'}
+          />
+        :
+          <MenuOpenIcon 
+            height={35} 
+            width={35} 
+            stroke={'var(--color_5)'}
+          />
         }
       </div>
       <div 
         className='header_responsive-logo'
-        onClick={ () => setToggled(false) }
+        onClick={ closeMenuHandler}
       >  
         <Link to={'/'}> 
-          <img src={Logo} alt='logo'/>
+          <img src={Logo} alt='logo'
+          />
         </Link>
       </div>
       <div className='header'> </div>
       {/* menu bar */}
       {toggled ? 
         (<div className={'header_responsive-navmenu'}>
-          <Navigation toggleHandler={toggleHandler} />
+          <Navigation toggleHandler={ toggleMenuHandler } />
         </div>) : null
       }
     </div>

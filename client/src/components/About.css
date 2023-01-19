@@ -1,6 +1,4 @@
-.about-container,
 .about-content,
-.about-container,
 .about-title,
 .about-title h1,
 .about-section,
@@ -14,14 +12,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
-.about-container {
-  justify-content: flex-start;
-  min-height: calc(100vh - var(--header_height));
-  background-color: rgb(121, 26, 3);
-}
-.about-container--minheight {
-  min-height: 100vh;
 }
 .about-content {
   margin-bottom: 2rem;
@@ -61,7 +51,7 @@
   grid-template-columns: repeat(1, 100%);
 }
 .about-section-group {
-  background-color: rgb(219, 219, 219);
+  background-color: var(--color_4);
   color: black;
 }
 .about-section-group-flex-wrapper {

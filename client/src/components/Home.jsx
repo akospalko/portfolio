@@ -1,11 +1,12 @@
 import React from 'react'
 import Anchor from './Anchor'
 import './Home.css'
+import './Shared.css'
+import IntroductionImage from '../assets/introduction_image.png'
 
 export default function Home() {
-
   return (
-  <article className='home-container'>
+  <article className='shared-page-container home-background--color home--height'>
     {/* anchor tag */}
     <Anchor componentName='home'/> 
     <div className='home-content'> 
@@ -21,7 +22,7 @@ export default function Home() {
       </div>
       {/* image */}
       <div className='home-image'>
-        <img src='https://media.composition.gallery/glossary/What-is-pixel-art-composition1542550648.png' alt='image about the author' />
+        <img src={ IntroductionImage } />
       </div>
       {/* text */}
       <div className='home-text'>

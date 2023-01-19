@@ -8,6 +8,7 @@ export const findAnchorLink = (navigationData, itemToFind) => {
       anchorObj = elem;    
     }
   })
+  console.log(anchorObj)
   return anchorObj; 
 }
 

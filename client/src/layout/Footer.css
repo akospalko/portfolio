@@ -15,7 +15,7 @@
 .footer-container {
   width: 100%;
   min-height: var(--footer_height);
-  background-color: rgb(161, 161, 161);
+  background-color: var(--color_2);
   padding: 1rem;
 }
 

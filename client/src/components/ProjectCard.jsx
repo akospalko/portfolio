@@ -1,8 +1,6 @@
 import React from 'react'
 import './ProjectCard.css'
-import InfoIcon from '../assets/info.svg' 
-import GithubIcon from '../assets/social_link_github_2.svg'
-import CloseIcon from '../assets/close.svg'
+import { GithubIcon, MenuCloseIcon, InformationIcon } from './SVGComponent'
 
 export default function ProjectCard({ data, toggle, setToggle }) {
   const {id, githubRepositoryLink, websiteLink, thumbnail, title, info } = data;
@@ -50,7 +48,12 @@ export default function ProjectCard({ data, toggle, setToggle }) {
             className='project_card-header-icon' 
             onClick={() => {toggleCardHandler(id, 'github')}}
           > 
-            <img src={ GithubIcon } alt='view code on github'/> 
+            <GithubIcon 
+              width={ 30 } 
+              height={ 30 } 
+              stroke={ 'var(--color_5)' }
+              strokeWidth={ '1.5' }
+            />
           </div>
             :
         <a 
@@ -58,8 +61,13 @@ export default function ProjectCard({ data, toggle, setToggle }) {
           href={ githubRepositoryLink } 
           target="_blank"
           rel="noopener noreferrer"
-        > 
-          <img src={ GithubIcon } alt='view code on github '/>  
+        >
+          <GithubIcon 
+            width={ 30 } 
+            height={ 30 } 
+            stroke={ 'var(--color_5)' }
+            strokeWidth={ '1.5' }
+          />
         </a> }
         {/* header title */}
         <h3 id='project_card-title'> { title } </h3>
@@ -70,9 +78,18 @@ export default function ProjectCard({ data, toggle, setToggle }) {
         > 
         {/* if github repo link.length > 1 display icon + toggle, else display anchor tag, navigate to page */}
           { toggle[id]?.toggledInfo ? 
-            <img src={ CloseIcon } alt='close info'/> 
+            <MenuCloseIcon 
+              height={ 25 } 
+              width={ 25 } 
+              stroke={ 'var(--color_5)' }
+            />
             :
-            <img src={ InfoIcon } alt='open info about the project'/> 
+            <InformationIcon 
+              height={ 35 } 
+              width={ 35 } 
+              stroke={ 'var(--color_5)' }
+              fill={ 'var(--color_5)' }
+            />
           }
         </div>
       </div>
@@ -98,7 +115,7 @@ export default function ProjectCard({ data, toggle, setToggle }) {
         //info
         <div className='project_card-info'>
           { info.map(info => (
-            <div className='project_card-info' key={ info.id }>
+            <div className='project_card-info project_card-info-title' key={ info.id }>
               <span> { info.title } </span>
               <p> { info.text } </p>
             </div>

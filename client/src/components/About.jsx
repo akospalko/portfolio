@@ -5,9 +5,9 @@ import { aboutSkills } from '../helper/dataControl'
 
 export default function About({ pageLayout }) {
     //conditional render height of the page based on if it is displayed as a single component vs together with other components
-    let componentContainer = 'about-container';
+    let componentContainer = 'shared-page-container';
     pageLayout === 'fullContentPage' ?  
-    componentContainer = ['about-container', 'about-container--minheight'].join(' ')
+    componentContainer = ['shared-page-container','shared-page-container--minheight'].join(' ')
     : null;  
   
   return (

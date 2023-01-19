@@ -7,12 +7,11 @@ import { socialLinks } from '../helper/dataControl'
 import SpaceCat from './SpaceCat'
 import Astronaut from './Astronaut'
 
-
 export default function Contact({ pageLayout }) {
   //conditional render height of the page based on if it is displayed as a single component vs together with other components
-  let componentContainer = 'contact-container';
+  let componentContainer = 'shared-page-container';
   pageLayout === 'fullContentPage' ?  
-  componentContainer = ['contact-container', 'contact-container--minheight'].join(' ')
+  componentContainer = ['shared-page-container', 'shared-page-container--minheight'].join(' ')
   : null;  
 
   return (
@@ -50,9 +49,6 @@ export default function Contact({ pageLayout }) {
         </div>
       </div>
       <div className='contact-group-2'>
-          {/* <div className=''> text bubble </div>
-          <div className=''> cat </div>
-          <div className=''> form </div>  */}
         <SpaceCat/>
         <ContactForm/>
       </div>

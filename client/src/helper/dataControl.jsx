@@ -12,23 +12,19 @@ export const navElements = [
   {
     id: 0,
     name: 'home',
-    path: '/',
-    anchorLink: '#home'
+    path: '/'
   }, {
     id: 1,
     name: 'about',
-    path: '/about',
-    anchorLink: '#about'
+    path: '/about'
   }, {
     id: 2,
     name: 'projects',
-    path: '/projects',
-    anchorLink: '#projects'
+    path: '/projects'
   }, {
     id: 3,
     name: 'contact',
-    path: '/contact',
-    anchorLink: '#contact'
+    path: '/contact'
   }
 ]
 

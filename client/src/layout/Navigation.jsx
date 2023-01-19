@@ -2,7 +2,7 @@
 import React from 'react'
 import { navElements } from '../helper/dataControl'
 import './Navigation.css'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function NavigationResponsive({ toggleHandler }) {
 //conditional rendering: navigation elements
@@ -11,13 +11,13 @@ export default function NavigationResponsive({ toggleHandler }) {
     <ul> {
       navElements.map((elem) => {
         if(elem.id === 0) return; // don't render home route
-        return <Link 
+        return <NavLink 
           key={elem.id} 
           to={elem.path}
           onClick={toggleHandler}
         > 
           <li className='navigation_responsive-item'> <p> {elem.name} </p> </li>
-        </Link>
+        </NavLink>
       })
     } </ul> 
   </div>
@@ -27,12 +27,14 @@ export default function NavigationResponsive({ toggleHandler }) {
     <ul> {
       navElements.map((elem) => {
         if(elem.id === 0) return; // don't render home route
-        return <Link 
+        return <NavLink 
           key={elem.id} 
           to={elem.path}
+          className={({ isActive }) => 
+          (isActive ? 'navigation-item--active' : null )}
         > 
           <li className='navigation-item'> <p> {elem.name} </p> </li>
-        </Link>
+        </NavLink>
       })
     } </ul> 
   </div> 
