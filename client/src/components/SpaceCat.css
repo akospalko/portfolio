@@ -1,7 +1,7 @@
 .space-cat-container,
 .space-cat-text-bubble,
 .space-cat-text-bubble-text {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,21 +20,26 @@
 }
 .space-cat-text-bubble-text {
   user-select: none;
-  background-color: grey;
+  background-color: var(--color_4);
+  border: 3px solid var(--color_1);
   border-radius: 25px;
-  width: 300px;
+  width: 200px;
   height: 100px;
   position: absolute;
+  text-align: center;
 }
 .space-cat-text-bubble-text p {
   font-size: 1.2rem;
+  color: var(--color_1);
+  margin: 0;
 }
 .space-cat-text-bubble-1 {
   width: 50px;
   height: 25px;
   position: absolute;
   border-radius: 25px;
-  background-color: grey;
+  background-color: var(--color_4);
+  border: 3px solid var(--color_1);
   left: 150px;
   bottom: 15px;
 }
@@ -45,7 +50,8 @@
   border-radius: 50px;
   left: 152px;
   bottom: -10px;
-  background-color: grey;
+  background-color: var(--color_4);
+  border: 3px solid var(--color_1);
 }
 .space-cat-proximity-hover {
   display: none;
@@ -82,6 +88,20 @@
   height: 16px;
   top: 169px;
   right: -107px;
+}
+
+
+@media (min-width: 300px) {
+  .space-cat-text-bubble {
+    width: 300px;
+  }
+  .space-cat-text-bubble-text {
+    width: 300px;
+  }
+  .space-cat-text-bubble-text > p {
+    justify-content: center;
+    padding: 0;
+  }
 }
 
 @media (min-width: 1366px) {

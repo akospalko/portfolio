@@ -5,12 +5,16 @@
 .contact-header-title,
 .contact-header-text,
 .contact-background,
+.contact-astronaut,
 .contact-additional-info {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+}
+.contact-page-container--background {
+  background-color: var(--color_2) ;
 }
 /* content container */
 .contact-content  {
@@ -22,8 +26,11 @@
   height: 100%;
   margin-bottom: 1rem;
 }
+.contact-group-1 {
+  width: 95%;
+}
 .contact-header-container {
-  height:auto;
+  height: auto;
 }
 /* header title */
 .contact-header-title  {
@@ -48,12 +55,17 @@
 .contact-background {
   padding: 0;
   overflow: hidden;
-  background-color: rgb(0, 0, 41);
+  background-color: var(--color_1);
+  height: 100%;
+}
+.contact-astronaut {
+  height: 100%;
 }
 .contact-additional-info {
-  background-color: rgb(175, 177, 24);
   z-index: 2;
   height: 100%;
+  width: 95%;
+  margin: 0.5rem;
 }
 .contact-additional-info p {
   height: 25px;
@@ -71,17 +83,24 @@
   .contact-group-2 {
     width: 100%;
   }
-  .contact-additional-info {
-    z-index: 2;
+  .contact-group-1 {
     width: 95%;
-    height: 100%;
-    margin: 1rem;
+  }
+  .contact-background {
+    flex-direction: row;
+    height: 500px;
+    width: 100%;
+    margin: 0;
+  }
+  .contact-astronaut {
+    width: 60%;
+  }
+  .contact-additional-info {
+    width: 40%;
+    margin: 0;
   }
   .contact-additional-info p {
     font-size: 1.3rem;
-  }
-  .contact-background {
-    margin: 0;
   }
 }
 
@@ -98,7 +117,6 @@
   /* content groups */
   .contact-group-1,
   .contact-group-2 {
-    width: 50%;
     align-items: space-between;
     margin-bottom: 0;
   }
@@ -116,24 +134,5 @@
   }
   .contact-header-text {
     height: 150px;
-  }
-  .contact-header-text p {
-    font-size: 1.3rem;
-  }
-  .contact-background {
-    flex-direction: row;
-    height: 500px;
-    margin: 0;
-  }
-  .contact-additional-info {
-    z-index: 2;
-    width: 50%;
-    height: 100%;
-    margin: 0rem;
-    flex-grow: 1;
-    background-color: rgb(175, 177, 24);
-  }
-  .contact-additional-info p {
-    font-size: 1.3rem;
   }
 }

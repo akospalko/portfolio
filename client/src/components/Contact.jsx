@@ -9,9 +9,9 @@ import Astronaut from './Astronaut'
 
 export default function Contact({ pageLayout }) {
   //conditional render height of the page based on if it is displayed as a single component vs together with other components
-  let componentContainer = 'shared-page-container';
+  let componentContainer = [ 'shared-page-container contact-page-container--background' ];
   pageLayout === 'fullContentPage' ?  
-  componentContainer = ['shared-page-container', 'shared-page-container--minheight'].join(' ')
+  componentContainer = [...componentContainer, 'shared-page-container--minheight'].join(' ')
   : null;  
 
   return (
@@ -33,16 +33,21 @@ export default function Contact({ pageLayout }) {
         {/* backround */}
         <div className='contact-background'>
           {/* Astrounaut bckg */}
-          <Astronaut/>
+          <div className='contact-astronaut'>
+            <Astronaut/>
+          </div>
           {/* additional information */}
           <div className='contact-additional-info'>
             <p> My Name </p>
             <p> myemail.@testmail.com </p>
             <div className='shared-sociallinks contact-sociallinks--fullwidth'>
-              { socialLinks.map(link => (
-                  <a key={link.id} href={link.link}>  
-                    <img src={link.icon} alt={link.altText}/>
-                  </a>
+              { socialLinks.map( link => (
+                <a 
+                  key={ link.id } 
+                  href={ link.link }
+                >  
+                  { link.icon }                  
+                </a>
               )) }
             </div>
           </div>

@@ -4,14 +4,20 @@ TODO: if server is not running we get -> undefined(500) as status message, fix s
 */
 
 import React from 'react'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import './ContactForm.css'
 import { contactFormData, SENDING_EMAIL } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
-import Loader from '../assets/loader.svg'
+import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
+import { LoaderIcon } from './SVGComponent'
 import axios from 'axios'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export default function ContactForm() {
+  //recaptcha 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { validateReCaptcha } = useValidateReCaptcha();
+
   const [contactData, setContactData] = useState(contactFormData);
   //const [isFormValid, setIsFormValid] = useState(false);
   //const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +36,32 @@ export default function ContactForm() {
     setContactData(updateObject);
     //TODO: set check form validity
   }
+
+//submit form
+const submitHandler = useCallback(async (e) => {
+  e.preventDefault();
+  // disable button right after form submit
+  setFormIsValid(false); 
+  if (!executeRecaptcha) {
+    setErrorMessage('Execute recaptcha not yet available');
+    return;
+  } 
+  //execute captcha: generate token
+  const token = await executeRecaptcha('contacts');
+  const { isCaptchaValid, errorMessage } = await validateReCaptcha(token); //validate token
+  setErrorMessage(errorMessage);
+  if(isCaptchaValid) { //if captcha validation is successful
+    //send email
+    const { mailSent, error } = await sendEmail(formData); 
+    setErrorMessage(error)  
+  } else {
+    setErrorMessage('Validating captcha has failed');
+  }
+  //reset form, states with a small delay
+  setTimeout(()=> {
+    resetForm(); 
+  }, 1000)
+}, [executeRecaptcha, useValidateReCaptcha]);
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
@@ -51,38 +83,40 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submitFormHandler} className='form'>
+    <form onSubmit={ submitFormHandler } className='form'>
       {/* enable loader modal when msg is being sent */}
-      {isSubmittingForm ? <div className='form-loadermodal'> 
+      { isSubmittingForm ? <div className='form-loadermodal'> 
         <div className='form-loader'> 
-          <img src={Loader} />
-          {/* success icon */}
-          {/* failure icon */}
+          <LoaderIcon 
+            width={ 60 } 
+            height={ 60 } 
+            stroke={ 'var(--color_1)' } 
+          />
         </div> 
-        <div className='form-statusmessage'> {statusMessage} </div>
+        <div className='form-statusmessage'> { statusMessage } </div>
       </div> : null }
       {/* <h2> Send a Message </h2> */}
       { buildForm(contactData).map((elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 
-            key={elem.id} 
-            onChange={changeHandler} 
-            type={elem.config.type} 
-            name={elem.config.name}
-            value={elem.config.value} 
-            placeholder={elem.config.placeholder}
+            key={ elem.id } 
+            onChange={ changeHandler } 
+            type={ elem.config.type } 
+            name={ elem.config.name }
+            value={ elem.config.value } 
+            placeholder={ elem.config.placeholder }
           />
         } else if (elem.config.fieldType === 'textarea') {
           return <div 
           className='form-message'
-          key={elem.id}>
+          key={ elem.id }>
             <textarea 
-              onChange={changeHandler} 
-              type={elem.config.type} 
-              name={elem.config.name}
-              value={elem.config.value}  
-              maxLength={elem.config.maxLength}
-              placeholder={elem.config.placeholder}
+              onChange={ changeHandler } 
+              type={ elem.config.type } 
+              name={ elem.config.name }
+              value={ elem.config.value }  
+              maxLength={ elem.config.maxLength }
+              placeholder={ elem.config.placeholder }
             />
             <div className='form-charactercount'> 
               { calcRemainingCharacters(elem.config.wordCount, elem.config.maxLength) } 
@@ -90,7 +124,9 @@ export default function ContactForm() {
           </div>
         }
       }) }
-      <button disabled={false}> Send </button>
+      <div className='form-button'> 
+        <button disabled={false}> <span> Send </span> </button>
+      </div>
     </form>
   )
 }

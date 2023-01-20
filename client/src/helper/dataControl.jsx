@@ -1,6 +1,6 @@
 //social link icons:
-import GithubIcon from '../assets/social_link_github_2.svg'
-import LinkedInIcon from '../assets/social_link_linkedin.svg'
+
+import { GithubIcon, LinkedInIcon } from '../components/SVGComponent'
 //about skill card icons:
 import CodeIcon from '../assets/code.svg'
 import GISIcon from '../assets/gis_2.svg'
@@ -74,14 +74,12 @@ export const contactFormData = {
 export const socialLinks = [
   {
     id: 1,
-    icon: GithubIcon,
-    link: '',
-    altText: 'github icon'
+    icon: <GithubIcon width={ 45 } height={ 45 } strokeWidth={ 1 } stroke={ 'var(--color_5)' } />,
+    link: 'https://github.com/akospalko'
   }, {
     id: 2,
-    icon: LinkedInIcon,
-    link: '',
-    altText: 'linkedIn icon'
+    icon: <LinkedInIcon width={ 45 } height={ 45 } fill={ 'var(--color_5)' } />,
+    link: 'https://www.linkedin.com/in/%C3%A1kos-palk%C3%B3-87a5191a2/'
   }
 ]
 

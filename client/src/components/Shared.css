@@ -56,10 +56,12 @@
 .shared-sociallinks a {
   width: 60px;
   height: 60px;
-  margin: 10px;
+  padding: 10px;
+  transition: 0.1s;
 }
 .shared-sociallinks a:hover {
   transform: scale(1.1);
+  transition: 0.2s;
 }
 .shared-sociallinks img {
   width: 100%;

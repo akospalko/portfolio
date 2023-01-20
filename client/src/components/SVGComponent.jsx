@@ -73,7 +73,7 @@ export function MenuCloseIcon({
     </svg>
   );
 }
-// github
+// github icon
 export function GithubIcon({ 
   width, 
   height, 
@@ -124,6 +124,111 @@ export function InformationIcon({
         clipRule="evenodd"
       ></path>
       <path d="M13.026 8.41a1.026 1.026 0 10-2.051 0 1.026 1.026 0 002.051 0z"></path>
+    </svg>
+  );
+}
+// linkedin icon
+export function LinkedInIcon({ 
+  width, 
+  height, 
+  fill="#0A66C2"
+}) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid"
+      width={ width }
+      height={ height }
+      viewBox="0 0 256 256"
+    >
+      <path
+        fill={ fill }
+        d="M218.12 218.13h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.778 15.434-22.778 31.369v60.43H99.752V95.966h36.414v16.694h.51a39.907 39.907 0 0135.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013zM56.95 79.27c-12.157.002-22.014-9.851-22.016-22.008-.002-12.157 9.851-22.014 22.008-22.016 12.157-.002 22.014 9.851 22.016 22.008A22.012 22.012 0 0156.95 79.27m18.966 138.86H37.945V95.97h37.97v122.16zM237.026.02H18.886C8.576-.096.12 8.162-.005 18.472v219.05c.121 10.315 8.575 18.582 18.89 18.474h218.14c10.336.128 18.824-8.138 18.967-18.474V18.452c-.148-10.33-8.636-18.589-18.966-18.454"
+      ></path>
+    </svg>
+  );
+}
+// loader
+export function LoaderIcon({ 
+  fill='none',
+  stroke='#fff',
+  width, 
+  height, 
+}) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" 
+      stroke={ stroke }
+      viewBox="0 0 57 57"
+      width={ width } 
+      height={ height }
+    >
+      <g
+        fill={ fill }
+        fillRule="evenodd"
+        strokeWidth="2"
+        transform="translate(1 1)"
+      >
+        <circle cx="5" cy="50" r="5">
+          <animate
+            attributeName="cy"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            repeatCount="indefinite"
+            values="50;5;50;50"
+          ></animate>
+          <animate
+            attributeName="cx"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            repeatCount="indefinite"
+            values="5;27;49;5"
+          ></animate>
+        </circle>
+        <circle cx="27" cy="5" r="5">
+          <animate
+            attributeName="cy"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            from="5"
+            repeatCount="indefinite"
+            to="5"
+            values="5;50;50;5"
+          ></animate>
+          <animate
+            attributeName="cx"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            from="27"
+            repeatCount="indefinite"
+            to="27"
+            values="27;49;5;27"
+          ></animate>
+        </circle>
+        <circle cx="49" cy="50" r="5">
+          <animate
+            attributeName="cy"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            repeatCount="indefinite"
+            values="50;50;5;50"
+          ></animate>
+          <animate
+            attributeName="cx"
+            begin="0s"
+            calcMode="linear"
+            dur="2.2s"
+            from="49"
+            repeatCount="indefinite"
+            to="49"
+            values="49;5;27;49"
+          ></animate>
+        </circle>
+      </g>
     </svg>
   );
 }

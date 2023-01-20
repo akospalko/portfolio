@@ -4,7 +4,6 @@ import '../components/Shared.css'
 import Logo from '../assets/logo.svg'
 import { navElements, socialLinks } from '../helper/dataControl'
 
-
 export default function Footer() {
   const footer = 
   <div className='footer-container'>
@@ -12,8 +11,8 @@ export default function Footer() {
     <ul className='footer-navlinks'> 
       { navElements.map(elem => (
         <a 
-        key={elem.id}
-        href={elem.anchorLink}
+          key={elem.id}
+          href={ `#${ elem.name }` }
         > 
           <li id={elem.name}> 
             <span> {elem.name} </span> 
@@ -23,12 +22,12 @@ export default function Footer() {
     </ul>
     {/* social links */}
     <div className='shared-sociallinks footer-sociallinks--added_margin'>
-      { socialLinks.map(link => (
+      { socialLinks.map( link => (
         <a 
-          key={link.id}
-          href={link.link}
+          key={ link.id } 
+          href={ link.link }
         >  
-          <img src={link.icon} alt={link.altText}/>
+          { link.icon }                  
         </a>
       )) }
     </div>

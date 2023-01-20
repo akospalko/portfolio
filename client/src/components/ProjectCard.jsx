@@ -51,7 +51,7 @@ export default function ProjectCard({ data, toggle, setToggle }) {
             <GithubIcon 
               width={ 30 } 
               height={ 30 } 
-              stroke={ 'var(--color_5)' }
+              stroke={ 'var(--color_1)' }
               strokeWidth={ '1.5' }
             />
           </div>
@@ -65,7 +65,7 @@ export default function ProjectCard({ data, toggle, setToggle }) {
           <GithubIcon 
             width={ 30 } 
             height={ 30 } 
-            stroke={ 'var(--color_5)' }
+            stroke={ 'var(--color_1)' }
             strokeWidth={ '1.5' }
           />
         </a> }
@@ -81,14 +81,14 @@ export default function ProjectCard({ data, toggle, setToggle }) {
             <MenuCloseIcon 
               height={ 25 } 
               width={ 25 } 
-              stroke={ 'var(--color_5)' }
+              stroke={ 'var(--color_1)' }
             />
             :
             <InformationIcon 
               height={ 35 } 
               width={ 35 } 
-              stroke={ 'var(--color_5)' }
-              fill={ 'var(--color_5)' }
+              stroke={ 'var(--color_1)' }
+              fill={ 'var(--color_1)' }
             />
           }
         </div>
@@ -140,7 +140,7 @@ export default function ProjectCard({ data, toggle, setToggle }) {
           rel="noopener noreferrer"
           disabled={true}
         > 
-          Visit Webpage
+          <p> Visit Webpage </p>
         </a> 
         : 
         <div className='project_card-buton--disabled'>
