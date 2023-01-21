@@ -1,5 +1,4 @@
 //social link icons:
-
 import { GithubIcon, LinkedInIcon } from '../components/SVGComponent'
 //about skill card icons:
 import CodeIcon from '../assets/code.svg'
