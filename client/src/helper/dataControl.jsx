@@ -28,6 +28,7 @@ export const navElements = [
   }
 ]
 
+//Forms:
 //contact form data initializer
 export const contactFormData = {
   name: {
@@ -36,6 +37,11 @@ export const contactFormData = {
     name: 'name',
     value: '',
     placeholder: 'your name',
+    validation: {
+      required: true,
+      minLength: 2,
+      maxLength: 100
+    },
     touched: false,
     valid: false,
   },
@@ -45,6 +51,13 @@ export const contactFormData = {
     name: 'email',
     value: '',
     placeholder: 'your@email.com',
+    required: true,
+    validation: {
+      required: true,
+      // minLength: 10,
+      maxLength: 100,
+      isEmail: true
+    },
     touched: false,
     valid: false,
   },
@@ -54,6 +67,11 @@ export const contactFormData = {
     name: 'subject',
     value: '',
     placeholder: 'mail subject',
+    validation: {
+      required: true,
+      // minLength: 5,
+      maxLength: 100
+    },
     touched: false,
     valid: false,
   },
@@ -63,8 +81,11 @@ export const contactFormData = {
     name: 'message',
     value: '',
     placeholder: 'your message',
-    minLength: 10,
-    maxLength: 500,
+    validation: {
+      required: true,
+      minLength: 10,
+      maxLength: 1500
+    },
     wordCount: 0,
     touched: false,
     valid: false,

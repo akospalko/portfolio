@@ -28,14 +28,18 @@
   width: 95%;
   font-family: 'Overpass', sans-serif;
 }
-.form input,
-.form textarea {
+.form-input-field {
   background-color: var(--color_4);
   color: var(--color_1);
   font-size: 1rem;
   outline: none;
   border: 0;
-  border-bottom: 3px solid var(--color_3); 
+}
+.valid {
+  border-bottom: 3px solid var(--color_2); 
+} 
+.invalid { 
+  border-bottom: 3px solid var(--color_invalid); 
 }
 .form input:focus,
 .form textarea:focus {
@@ -45,10 +49,6 @@
 .form textarea::placeholder {
   color: var(--color_1);
 }
-.form input:auto-fill { 
-  background-color: transparent;
-}
-
 .form-charactercount {
   color: var(--color_1); 
   font-weight: bold;
@@ -94,7 +94,6 @@
   border: 0;
   padding: 0;
   margin: 1rem;
-  cursor: pointer;
 }
 .form-button button {
   width: 100%;
@@ -102,6 +101,10 @@
   border: none;
   margin: 0;
   background-color: var(--color_2);
+  cursor: pointer;
+}
+.form-button button:disabled {
+  background-color: var(--color_disabled);
 }
 .form-button button > span {
   font-size: 1.1rem;

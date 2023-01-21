@@ -138,7 +138,7 @@ export default function ProjectCard({ data, toggle, setToggle }) {
           href={ websiteLink }
           target="_blank"
           rel="noopener noreferrer"
-          disabled={true}
+          disabled={ true }
         > 
           <p> Visit Webpage </p>
         </a> 

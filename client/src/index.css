@@ -23,6 +23,9 @@
   --color_4:  #b3cde4;
   --color_5: #eef3f9; 
 
+  --color_disabled: rgb(149, 149, 149);
+  --color_invalid: rgb(135, 9, 9);
+  
   /* custom values */
   --header_height: 75px; 
   --footer_height: 250px;

@@ -11,15 +11,14 @@ import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/uti
 import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
 import { LoaderIcon } from './SVGComponent'
 import axios from 'axios'
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
+import { validateForm } from '../helper/validateForm'
 export default function ContactForm() {
   //recaptcha 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { validateReCaptcha } = useValidateReCaptcha();
-
   const [contactData, setContactData] = useState(contactFormData);
-  //const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   //const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
@@ -28,13 +27,19 @@ export default function ContactForm() {
     e.preventDefault();
     const { name: eventName, value: eventValue } = e.target;
     let updateObject = { ...contactData };
-    let updateElement = { ...updateObject[eventName]};
+    let updateElement = { ...updateObject[eventName] };
     updateElement.touched = true;
     updateElement.value = eventValue;
+    updateElement.valid = validateForm(updateElement.value, updateElement.validation);
     updateElement.wordCount = updateElement.value.length; // update word count
     updateObject[eventName] = updateElement;
     setContactData(updateObject);
-    //TODO: set check form validity
+    //check form validity
+    let validatedForm = true;
+    for(let elem in updateObject) {
+      validatedForm = updateObject[elem].valid && validatedForm
+    }
+    setIsFormValid(validatedForm);
   }
 
 //submit form
@@ -99,11 +104,14 @@ const submitHandler = useCallback(async (e) => {
       { buildForm(contactData).map((elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 
-            key={ elem.id } 
+            key={ elem.id }
+            className={ elem.config.valid === true ? 'form-input-field' : 'form-input-field invalid' } 
             onChange={ changeHandler } 
             type={ elem.config.type } 
             name={ elem.config.name }
             value={ elem.config.value } 
+            minLength={ elem.config.validation.minLength }
+            maxLength={ elem.config.validation.maxLength }
             placeholder={ elem.config.placeholder }
           />
         } else if (elem.config.fieldType === 'textarea') {
@@ -111,21 +119,22 @@ const submitHandler = useCallback(async (e) => {
           className='form-message'
           key={ elem.id }>
             <textarea 
+              className={ elem.config.valid === true ? 'form-input-field valid' : 'form-input-field invalid' } 
               onChange={ changeHandler } 
               type={ elem.config.type } 
               name={ elem.config.name }
               value={ elem.config.value }  
-              maxLength={ elem.config.maxLength }
+              maxLength={ elem.config.validation.maxLength }
               placeholder={ elem.config.placeholder }
             />
             <div className='form-charactercount'> 
-              { calcRemainingCharacters(elem.config.wordCount, elem.config.maxLength) } 
+              { calcRemainingCharacters(elem.config.wordCount, elem.config.validation.maxLength) } 
             </div>
           </div>
         }
       }) }
       <div className='form-button'> 
-        <button disabled={false}> <span> Send </span> </button>
+        <button disabled={ !isFormValid }> <span> Send </span> </button>
       </div>
     </form>
   )
