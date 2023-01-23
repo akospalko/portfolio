@@ -1,5 +1,5 @@
 /*
-TODO: button styling + disable
+TODO: reset form if sending message was successful
 TODO: if server is not running we get -> undefined(500) as status message, fix status message  
 */
 
@@ -19,10 +19,10 @@ export default function ContactForm() {
   const { validateReCaptcha } = useValidateReCaptcha();
   const [contactData, setContactData] = useState(contactFormData);
   const [isFormValid, setIsFormValid] = useState(false);
-  //const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
 
+  //input change handler
   const changeHandler = (e) => {
     e.preventDefault();
     const { name: eventName, value: eventValue } = e.target;
@@ -42,50 +42,48 @@ export default function ContactForm() {
     setIsFormValid(validatedForm);
   }
 
-//submit form
-const submitHandler = useCallback(async (e) => {
-  e.preventDefault();
-  // disable button right after form submit
-  setFormIsValid(false); 
-  if (!executeRecaptcha) {
-    setErrorMessage('Execute recaptcha not yet available');
-    return;
-  } 
-  //execute captcha: generate token
-  const token = await executeRecaptcha('contacts');
-  const { isCaptchaValid, errorMessage } = await validateReCaptcha(token); //validate token
-  setErrorMessage(errorMessage);
-  if(isCaptchaValid) { //if captcha validation is successful
-    //send email
-    const { mailSent, error } = await sendEmail(formData); 
-    setErrorMessage(error)  
-  } else {
-    setErrorMessage('Validating captcha has failed');
-  }
-  //reset form, states with a small delay
-  setTimeout(()=> {
-    resetForm(); 
-  }, 1000)
-}, [executeRecaptcha, useValidateReCaptcha]);
-
-  const submitFormHandler = async (e) => {
+  const submitFormHandler = useCallback(async (e) => {
     e.preventDefault();
-    const mailData = getFormValues(contactData); // prepare data to send -> filter out field name/value
-    if(!mailData) return;
     setIsSubmittingForm(true); 
     setStatusMessage(SENDING_EMAIL);
-    try {
-      const sendMailResponse = await axios.post(`/sendmail`, mailData);
-        setStatusMessage(`${sendMailResponse.data.statusMessage}`);
-        setContactData(contactFormData) // reset form to its initial state  
-    } catch (error) {
+    // disable button right after submit
+    setIsFormValid(false); 
+    // execute recaptcha if available
+    if (!executeRecaptcha) {
+      setStatusMessage('Recaptcha is not yet available');
+      setIsSubmittingForm(false); 
+      return;
+    } 
+    //execute captcha: generate token
+    const token = await executeRecaptcha('contact');
+    //validate recaptcha 
+    const isCaptchaValid = await validateReCaptcha(token); // validate token
+    console.log(isCaptchaValid);
+   // const { isCaptchaValid, statusMessage } = await validateReCaptcha(token); // validate token
+    setStatusMessage(statusMessage);
+    if(isCaptchaValid) { //if captcha is valid
+      try {
+        const sendMailResponse = await axios.post(`/sendmail`, mailData);
+          setStatusMessage(`${sendMailResponse.data.statusMessage}`);
+          setContactData(contactFormData) // reset form to its initial state  
+      } catch (error) {
+        console.log(error);
         setStatusMessage(`${error.response.data.statusMessage} (${error.response.status})`);
+        setIsSubmittingForm(false); 
+        setIsFormValid(true); // revert back form validity (re-enable)
+        }
+    } else {
+      setStatusMessage('Validating captcha has failed');
+      setIsSubmittingForm(false); 
+      setIsFormValid(true); // revert back form validity (re-enable)
     }
     //allow user to see loader and status message if request happens too quickly 
     setTimeout(() => {
-      setIsSubmittingForm(false); 
+      //reset form 
+      //resetForm();  
+        setIsSubmittingForm(false); 
     }, [1000])
-  }
+  }, [executeRecaptcha, setStatusMessage, validateReCaptcha])
 
   return (
     <form onSubmit={ submitFormHandler } className='form'>
@@ -105,7 +103,7 @@ const submitHandler = useCallback(async (e) => {
         if(elem.config.fieldType === 'input') {
           return <input 
             key={ elem.id }
-            className={ elem.config.valid === true ? 'form-input-field' : 'form-input-field invalid' } 
+            className={ elem.config.valid === true ? 'form-input-field valid' : 'form-input-field invalid' } 
             onChange={ changeHandler } 
             type={ elem.config.type } 
             name={ elem.config.name }

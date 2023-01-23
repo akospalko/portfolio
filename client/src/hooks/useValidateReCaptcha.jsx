@@ -4,29 +4,31 @@ const useValidateReCaptcha = () => {
   const validateReCaptcha = async (token) => {
     //store validation result
     let isCaptchaValid = false;
-    let errorMessage = '';
+    let statusMessage = '';
     //token validation 
     if(token) { 
+      console.log('validating token:', token)
       //post data to server
       await axios.post("/captcha", {token: token})
       //successful response from server
       .then(res => {
-        // console.log('Validation result: ', res.data.success);
+        console.log(res);
         isCaptchaValid = res.data.success;
-        errorMessage = res.data.responseMsg
+        statusMessage = res.data.responseMsg
       })
         //error response from server
       .catch((err)=> {
         // console.log('Couldn\'t send token to server:', err);
         isCaptchaValid = false;
-        errorMessage = err;
+        statusMessage = err;
       })
     } 
     else {
       isCaptchaValid = false;
-      errorMessage = 'no token';
+      statusMessage = 'no token';
     } 
-    return { isCaptchaValid, errorMessage }; // return validation result (true || false)
+    console.log('validating token:', token, isCaptchaValid, statusMessage);
+    return { isCaptchaValid, statusMessage }; // return validation result (true || false)
   }
   return { validateReCaptcha };
 }
